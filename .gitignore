@@ -7,7 +7,5 @@ build
 build/
 DerivedData/
 
-*.pbxuser
-*.perspective
-*.perspectivev3
+.xcodeproj/ !*.xcodeproj/project.pbxproj
 xcuserdata

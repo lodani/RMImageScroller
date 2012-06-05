@@ -26,11 +26,11 @@
 
 @interface RMImageScroller : UIView<UIScrollViewDelegate> {
 	// UI
-    UIColor __unsafe_unretained *imageTitleBackgroundColor;
+    UIColor *imageTitleBackgroundColor;
 	UIScrollView* scroller;
-    UIColor __unsafe_unretained *selectedImageTitleBackgroundColor;
+    UIColor *selectedImageTitleBackgroundColor;
 	UISlider *slider;
-	
+    
 	// State
     int centeredIndex;
 	NSMutableSet* recycledViews;
@@ -39,8 +39,7 @@
 	BOOL scrollerOffsetNeedsLayout;
 	NSMutableSet* visibleViews;
 	int selectedIndex;
-	int contentWidth;
-	
+    
 	// Configuration
 	id<RMImageScrollerDelegate> delegate;
 	BOOL spreadMode;
@@ -50,24 +49,23 @@
 	int imageWidth;
 	int imageHeight;
 	int separatorWidth;
+    BOOL spreadFirstPageAlone;
     int titleHeight;
-	
-	BOOL spreadFirstPageAlone;
 }
 
 @property (nonatomic, unsafe_unretained) IBOutlet id<RMImageScrollerDelegate> delegate;
 @property (nonatomic, assign) BOOL hideSlider;
 @property (nonatomic, assign) BOOL hideTitles;
-@property (nonatomic, unsafe_unretained) UIColor *imageTitleBackgroundColor;
+@property (retain, nonatomic) UIColor *imageTitleBackgroundColor;
 @property (nonatomic, assign) int imageWidth;
 @property (nonatomic, assign) int imageHeight;
 @property (nonatomic, assign) int padding;
-@property (nonatomic, assign) int titleHeight;
 @property (nonatomic, readonly) UIScrollView* scrollView;
-@property (nonatomic, unsafe_unretained) UIColor *selectedImageTitleBackgroundColor;
+@property (retain, nonatomic) UIColor *selectedImageTitleBackgroundColor;
 @property (nonatomic, assign) int separatorWidth;
 @property (nonatomic, getter=isSpreadFirstPageAlone) BOOL spreadFirstPageAlone;
 @property (nonatomic, assign) BOOL spreadMode;
+@property (nonatomic, assign) int titleHeight;
 
 - (void) reloadImages;
 - (void) setSelectedIndex:(int)index;

@@ -94,13 +94,8 @@ int const kImagesCount = 10;
 
 -(void)	imageScroller:(RMImageScroller*)imageScroller spreadSelectedFrom:(int)startIndex to:(int)endIndex {
 	UIImage* left = [self imageScroller:imageScroller imageAt:startIndex];
-	if (scroller.spreadFirstPageAlone && (startIndex == 0 || startIndex == kImagesCount - 1)) {
-		selectedImage.image = left;
-	}
-	else {
-		UIImage* right = (startIndex == endIndex) ? nil : [self imageScroller:imageScroller imageAt:endIndex];
-		selectedImage.image = [RMUIUtils imageByJoining:left with:right];
-	}
+	UIImage* right = (startIndex == endIndex) ? nil : [self imageScroller:imageScroller imageAt:endIndex];
+    selectedImage.image = [RMUIUtils imageByJoining:left with:right];
 	[scroller setSelectedIndex:endIndex animated:YES];
 }
 
